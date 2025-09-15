@@ -1,5 +1,17 @@
+import { Routes, Route } from "react-router";
+
+import Navbar from "./components/Navbar.jsx";
+import HomePage from "./pages/HomePage.jsx";
+
 const App = () => {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </>
+  );
 };
 
 export default App;
