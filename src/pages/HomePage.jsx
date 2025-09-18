@@ -1,44 +1,52 @@
 import car1 from "../assets/car1.jpg";
-import car2 from "../assets/car2.jpg";
-import OfferCard from "../components/OfferCard";
+import car2 from "../assets/car3.jpg";
+import top from "../assets/chrysler-building.png";
 
-import { offerCardInfo } from "../constants";
+import OfferCard from "../components/OfferCard";
+import TextBlock from "../components/TextBlock";
+import Border from "../components/Border";
+
+import { offerCardInfo, homePageInfo } from "../constants";
 
 const HomePage = () => {
   return (
-    <div className="mx-20 mt-48">
-      <div className="mx-auto flex max-w-full justify-between border-b-2 border-base-content/10">
-        <div className="mx-auto max-w-xl basis-1/2 flex-col content-center">
-          <h1 className="mb-4 text-center text-3xl font-semibold">Purpose</h1>
-          <p className="text-center text-xl text-base-content/70">
-            Dedicated to the preservation and restoration of Chrysler Products
-            of North American origin including Chrysler, Imperial, DeSoto,
-            Fargo, Chalmers, Dodge, Graham Brothers, Plymouth, Jeep and Valiant.
-          </p>
+    <div className="m-10 mx-auto mt-48 max-w-6xl">
+      <Border>
+        <img src={top} height="100%" width="100%" />
+      </Border>
+
+      <div className="my-10 max-w-full">
+        <Border>
+          <TextBlock
+            title={homePageInfo.welcome.title}
+            description={homePageInfo.welcome.description}
+          />
+        </Border>
+      </div>
+
+      <div className="my-10 flex max-w-full justify-between gap-10">
+        <div className="grow basis-1/2">
+          <Border>
+            <TextBlock
+              title={homePageInfo.purpose.title}
+              description={homePageInfo.purpose.description}
+            />
+          </Border>
         </div>
-        <div className="mb-10 flex basis-1/2 justify-center">
-          <img className="rounded-3xl" src={car1} height="650" width="650" />
+        <div className="basis-1/2">
+          <Border>
+            <img src={car2} />
+          </Border>
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-full justify-between border-b-2 border-base-content/10">
-        <div className="my-10 flex basis-1/2 justify-center">
-          <img className="rounded-3xl" src={car2} height="650" width="650" />
-        </div>
-        <div className="mx-auto max-w-xl basis-1/2 flex-col content-center">
-          <h1 className="mb-4 text-center text-3xl font-semibold">Welcome</h1>
-          <p className="text-center text-xl text-base-content/70">
-            The Chrysler Restorers Club of New Zealand club was formed in August
-            1976 by members dedicated to the preservation and restoration of
-            Chrysler Products of North American origin. The club has members
-            through out New Zealand.
-          </p>
-        </div>
-      </div>
+      <Border>
+        <img src={car1} height="100%" width="100%" />
+      </Border>
 
       <div className="mx-8 my-10 flex justify-between">
         {offerCardInfo.map((info) => (
-          <OfferCard key={info} {...info} />
+          <OfferCard {...info} />
         ))}
       </div>
     </div>
