@@ -1,21 +1,25 @@
 import car1 from "../assets/car1.jpg";
-import car2 from "../assets/car3.jpg";
+import car3 from "../assets/car3.jpg";
+import car4 from "../assets/car4.jpg";
 import top from "../assets/chrysler-building.png";
+import membership_form from "../assets/MEMBERSHIP APPLICATION.pdf";
 
-import OfferCard from "../components/OfferCard";
+import OfferText from "../components/OfferText";
 import TextBlock from "../components/TextBlock";
 import Border from "../components/Border";
 
-import { offerCardInfo, homePageInfo } from "../constants";
+import { offerInfo, homePageInfo } from "../constants";
 
 const HomePage = () => {
   return (
-    <div className="m-10 mx-auto mt-48 max-w-6xl">
-      <Border>
-        <img src={top} height="100%" width="100%" />
-      </Border>
+    <div className="mx-auto mt-44 max-w-6xl">
+      <div className="my-5">
+        <Border>
+          <img src={top} height="100%" width="100%" />
+        </Border>
+      </div>
 
-      <div className="my-10 max-w-full">
+      <div className="my-5 max-w-full">
         <Border>
           <TextBlock
             title={homePageInfo.welcome.title}
@@ -24,7 +28,7 @@ const HomePage = () => {
         </Border>
       </div>
 
-      <div className="my-10 flex max-w-full justify-between gap-10">
+      <div className="my-5 flex max-w-full flex-col gap-5 lg:flex-row">
         <div className="grow basis-1/2">
           <Border>
             <TextBlock
@@ -33,21 +37,72 @@ const HomePage = () => {
             />
           </Border>
         </div>
-        <div className="basis-1/2">
+        <div className="grow basis-1/2">
           <Border>
-            <img src={car2} />
+            <img src={car3} />
           </Border>
         </div>
       </div>
 
-      <Border>
-        <img src={car1} height="100%" width="100%" />
-      </Border>
+      <div className="my-5 flex max-w-full justify-between gap-5">
+        <div className="grow basis-1/2">
+          <div className="flex flex-col gap-5">
+            <Border>
+              <img src={car1} height="100%" width="100%" />
+            </Border>
+            <Border>
+              <img src={car4} height="100%" width="100%" />
+            </Border>
+          </div>
+        </div>
+        <div className="grow basis-1/2">
+          <Border>
+            <div className="flex h-full flex-col items-center justify-between">
+              <h1 className="mb-4 text-center text-3xl font-bold underline">
+                What We Offer
+              </h1>
+              {offerInfo.map((info) => (
+                <div className="my-2">
+                  <OfferText {...info} />
+                </div>
+              ))}
+            </div>
+          </Border>
+        </div>
+      </div>
 
-      <div className="mx-8 my-10 flex justify-between">
-        {offerCardInfo.map((info) => (
-          <OfferCard {...info} />
-        ))}
+      <div className="my-5">
+        <Border>
+          <h1 className="mb-4 text-center text-3xl font-bold underline">
+            Membership
+          </h1>
+          <p className="mb-4 text-center text-xl">
+            The annual membership cost is $50 for individuals and $55 for
+            families. The membership includes 6 magazines a year, access to the
+            spare parts, access to the club library, and events organised by the
+            club.
+          </p>
+
+          <p className="my-2 text-center text-xl">
+            To Join the Chrysler Club please{" "}
+            <a
+              className="text-blue-700 underline"
+              href={membership_form}
+              target="_blank"
+            >
+              Click Here
+            </a>{" "}
+            to download the membership form. To Print: Open the link and RIGHT
+            CLICK, select PRINT, then fill the form and mail it to Po Box 75-673
+            Manurewa, Auckland 2243 or email it to{" "}
+            <a
+              className="text-blue-700 underline"
+              href="mailto:chryslerrestorersclubnz@gmail.com"
+            >
+              chryslerrestorersclubnz@gmail.com
+            </a>
+          </p>
+        </Border>
       </div>
     </div>
   );
