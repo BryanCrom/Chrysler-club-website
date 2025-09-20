@@ -12,7 +12,7 @@ import { offerInfo, homePageInfo } from "../constants";
 
 const HomePage = () => {
   return (
-    <div className="mx-auto mt-44 max-w-6xl">
+    <div className="mx-5 mt-32 max-w-6xl md:mt-44 xl:mx-auto">
       <div className="my-5">
         <Border>
           <img src={top} height="100%" width="100%" />
@@ -28,7 +28,7 @@ const HomePage = () => {
         </Border>
       </div>
 
-      <div className="my-5 flex max-w-full flex-col gap-5 lg:flex-row">
+      <div className="my-5 flex max-w-full flex-col-reverse gap-5 lg:flex-row">
         <div className="grow basis-1/2">
           <Border>
             <TextBlock
@@ -37,32 +37,30 @@ const HomePage = () => {
             />
           </Border>
         </div>
-        <div className="grow basis-1/2">
+        <div className="h-full grow basis-1/2">
           <Border>
-            <img src={car3} />
+            <img src={car3} height="100%" width="100%" />
           </Border>
         </div>
       </div>
 
-      <div className="my-5 flex max-w-full justify-between gap-5">
-        <div className="grow basis-1/2">
-          <div className="flex flex-col gap-5">
-            <Border>
-              <img src={car1} height="100%" width="100%" />
-            </Border>
-            <Border>
-              <img src={car4} height="100%" width="100%" />
-            </Border>
-          </div>
+      <div className="xl:grid-rows-auto my-5 grid max-w-full justify-between gap-5 xl:grid-cols-2">
+        <Border>
+          <img src={car1} height="100%" width="100%" />
+        </Border>
+        <div className="order-last">
+          <Border>
+            <img src={car4} height="100%" width="100%" />
+          </Border>
         </div>
-        <div className="grow basis-1/2">
+        <div className="row-span-2">
           <Border>
             <div className="flex h-full flex-col items-center justify-between">
               <h1 className="mb-4 text-center text-3xl font-bold underline">
                 What We Offer
               </h1>
-              {offerInfo.map((info) => (
-                <div className="my-2">
+              {offerInfo.map((info, index) => (
+                <div key={index} className="my-4">
                   <OfferText {...info} />
                 </div>
               ))}
@@ -96,7 +94,7 @@ const HomePage = () => {
             CLICK, select PRINT, then fill the form and mail it to Po Box 75-673
             Manurewa, Auckland 2243 or email it to{" "}
             <a
-              className="text-blue-700 underline"
+              className="mktNoTrack break-words text-blue-700 underline"
               href="mailto:chryslerrestorersclubnz@gmail.com"
             >
               chryslerrestorersclubnz@gmail.com
