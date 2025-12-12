@@ -1,6 +1,6 @@
 import car1 from "../assets/car1.jpg";
 import car3 from "../assets/car3.jpg";
-import car4 from "../assets/car4.jpg";
+import car2 from "../assets/car2.jpg";
 import top from "../assets/chrysler-building.png";
 import membership_form from "../assets/MEMBERSHIP APPLICATION.pdf";
 
@@ -50,7 +50,7 @@ const HomePage = () => {
         </Border>
         <div className="order-last">
           <Border>
-            <img src={car4} height="100%" width="100%" />
+            <img src={car2} height="100%" width="100%" />
           </Border>
         </div>
         <div className="row-span-2">
