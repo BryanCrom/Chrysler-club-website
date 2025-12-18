@@ -1,4 +1,7 @@
+import { IconPointFilled } from "@tabler/icons-react";
+
 import { Link } from "react-router";
+
 import chryslerSticker from "../assets/Chrysler-Sticker.png";
 
 const Navbar = () => {
@@ -14,14 +17,14 @@ const Navbar = () => {
               />
             </Link>
             <h1 className="text-xl md:text-3xl">Chrysler Restorers Club NZ</h1>
-            <div className="flex grow items-center justify-end gap-4">
-              <Link to="/" className="btn rounded-2xl md:btn-lg md:rounded-3xl">
+            <div className="flex grow items-center justify-end gap-2 md:gap-4">
+              <Link to="/" className="btn btn-ghost btn-lg rounded-xl">
                 Home
               </Link>
-              <div className="divider divider-horizontal h-20" />
+              <IconPointFilled className="h-2 md:h-4" />
               <Link
                 to="/contact"
-                className="btn rounded-2xl md:btn-lg md:rounded-3xl"
+                className="w-28 rounded-xl bg-red-900 p-4 text-center text-white"
               >
                 Contact Us
               </Link>
