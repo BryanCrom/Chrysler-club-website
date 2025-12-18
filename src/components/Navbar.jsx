@@ -1,5 +1,3 @@
-import { IconPointFilled } from "@tabler/icons-react";
-
 import { Link } from "react-router";
 
 import chryslerSticker from "../assets/Chrysler-Sticker.png";
@@ -21,11 +19,8 @@ const Navbar = () => {
               <Link to="/" className="btn btn-ghost btn-lg rounded-xl">
                 Home
               </Link>
-              <IconPointFilled className="h-2 md:h-4" />
-              <Link
-                to="/contact"
-                className="w-28 rounded-xl bg-red-900 p-4 text-center text-white"
-              >
+
+              <Link to="/contact" className="btn btn-ghost btn-lg rounded-xl">
                 Contact Us
               </Link>
             </div>

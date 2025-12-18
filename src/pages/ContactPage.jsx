@@ -1,17 +1,13 @@
 import Border from "../components/Border";
-import TextBlock from "../components/TextBlock";
 
 const ContactPage = () => {
   return (
     <div className="mx-5 mt-32 max-w-3xl md:mt-44 xl:mx-auto">
       <Border>
-        <TextBlock
-          title={"Contact Us"}
-          description={
-            "Get in touch with a member to learn more about the club"
-          }
-        />
-        <form className="mt-5 flex flex-col">
+        <h1 className="mb-4 text-center text-4xl font-bold underline">
+          Contact Us
+        </h1>
+        <form className="flex flex-col">
           <div className="m-5 flex flex-col">
             <label className="text-lg font-semibold">Full Name</label>
             <input
