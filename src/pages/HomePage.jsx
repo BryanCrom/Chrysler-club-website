@@ -2,7 +2,7 @@ import car1 from "../assets/car1.jpg";
 import car3 from "../assets/car3.jpg";
 import car2 from "../assets/car2.jpg";
 import top from "../assets/chrysler-building.png";
-import membership_form from "../assets/MEMBERSHIP APPLICATION.pdf";
+import membership_form from "../assets/MEMBERSHIP_APPLICATION.pdf";
 
 import OfferText from "../components/OfferText";
 import TextBlock from "../components/TextBlock";
