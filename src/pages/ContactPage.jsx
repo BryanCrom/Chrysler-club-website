@@ -1,11 +1,12 @@
 import emailjs from "@emailjs/browser";
-import { useRef } from "react";
-import toast from "react-hot-toast";
+import { useRef, useState } from "react";
 
 import Border from "../components/Border";
+import Modal from "../components/Modal";
 
 const ContactPage = () => {
   const formRef = useRef();
+  const [email, setEmail] = useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -19,12 +20,13 @@ const ContactPage = () => {
       )
       .then(
         () => {
+          setEmail(formRef.current.email.value);
           console.log("success");
-          toast.success("Successfully sent message");
+          document.getElementById("success_modal").showModal();
         },
         (error) => {
           console.log("Error: " + error);
-          toast.error("Something went wrong");
+          document.getElementById("error_modal").showModal();
         },
       );
   };
@@ -37,34 +39,53 @@ const ContactPage = () => {
         </h1>
         <form className="flex flex-col" ref={formRef} onSubmit={sendEmail}>
           <div className="m-5 flex flex-col">
-            <label className="text-lg font-semibold">Full Name</label>
-            <input
-              name="full_name"
-              className="border-4 border-red-900 p-2"
-              type="text"
-              placeholder="Enter your name"
-              required
-            ></input>
+            <label
+              className="flex flex-col text-lg font-semibold"
+              id="full_name_label"
+            >
+              Full Name
+              <input
+                id="full_name_input"
+                name="full_name"
+                className="border-4 border-red-900 p-2"
+                type="text"
+                placeholder="Enter your name"
+                required
+                autoComplete="on"
+              ></input>
+            </label>
           </div>
           <div className="m-5 flex flex-col">
-            <label className="text-lg font-semibold">Email Address</label>
-            <input
-              name="email"
-              className="border-4 border-red-900 p-2"
-              type="email"
-              placeholder="Enter your email"
-              required
-            ></input>
+            <label
+              className="flex flex-col text-lg font-semibold"
+              id="email_label"
+            >
+              Email Address
+              <input
+                id="email_input"
+                name="email"
+                className="border-4 border-red-900 p-2"
+                type="email"
+                placeholder="Enter your email"
+                required
+                autoComplete="email"
+              ></input>
+            </label>
           </div>
           <div className="m-5 flex flex-col">
-            <label className="text-lg font-semibold">Message</label>
-            <textarea
-              className="h-32 border-4 border-red-900 p-2"
-              name="message"
-              id=""
-              placeholder="Enter your message"
-              required
-            ></textarea>
+            <label
+              className="flex flex-col text-lg font-semibold"
+              id="message_label"
+            >
+              Message
+              <textarea
+                className="h-32 border-4 border-red-900 p-2"
+                name="message"
+                id="message_textarea"
+                placeholder="Enter your message"
+                required
+              ></textarea>
+            </label>
           </div>
           <div className="m-5 flex items-center justify-center">
             <button
@@ -76,6 +97,13 @@ const ContactPage = () => {
           </div>
         </form>
       </Border>
+
+      <dialog id="success_modal" className="modal">
+        <Modal title="Success" message={`A reply will be sent to ${email}`} />
+      </dialog>
+      <dialog id="error_modal" className="modal">
+        <Modal title="error" message="Something went wrong." />
+      </dialog>
     </div>
   );
 };
