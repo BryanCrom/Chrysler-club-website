@@ -1,22 +1,29 @@
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 import Border from "../components/Border";
 import Modal from "../components/Modal";
 
 const ContactPage = () => {
   const formRef = useRef();
+
   const [email, setEmail] = useState("");
+  const [token, setToken] = useState(null);
 
   const sendEmail = (e) => {
     e.preventDefault();
 
+    if (formRef.current.subject.value) {
+      return;
+    }
+
     emailjs
       .sendForm(
-        import.meta.env.VITE_SERVICEID,
-        import.meta.env.VITE_TEMPLATEID,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        import.meta.env.VITE_PUBLIC_KEY,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )
       .then(
         () => {
@@ -32,13 +39,13 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="mx-5 mb-10 mt-32 max-w-3xl md:mt-44 xl:mx-auto">
+    <div className="mx-5 mb-10 mt-32 max-w-3xl md:mx-auto md:mt-44">
       <Border>
         <h1 className="mb-4 text-center text-4xl font-bold underline">
           Contact Us
         </h1>
         <form className="flex flex-col" ref={formRef} onSubmit={sendEmail}>
-          <div className="m-5 flex flex-col">
+          <div className="mx-5 my-2.5 flex flex-col">
             <label
               className="flex flex-col text-lg font-semibold"
               id="full_name_label"
@@ -52,10 +59,10 @@ const ContactPage = () => {
                 placeholder="Enter your name"
                 required
                 autoComplete="on"
-              ></input>
+              />
             </label>
           </div>
-          <div className="m-5 flex flex-col">
+          <div className="mx-5 my-2.5 flex flex-col">
             <label
               className="flex flex-col text-lg font-semibold"
               id="email_label"
@@ -69,10 +76,20 @@ const ContactPage = () => {
                 placeholder="Enter your email"
                 required
                 autoComplete="email"
+              />
+            </label>
+          </div>
+          <div className="hidden">
+            <label>
+              <input
+                id="subject_input"
+                name="subject"
+                type="text"
+                autoComplete="off"
               ></input>
             </label>
           </div>
-          <div className="m-5 flex flex-col">
+          <div className="mx-5 my-2.5 flex flex-col">
             <label
               className="flex flex-col text-lg font-semibold"
               id="message_label"
@@ -84,13 +101,22 @@ const ContactPage = () => {
                 id="message_textarea"
                 placeholder="Enter your message"
                 required
-              ></textarea>
+              />
             </label>
           </div>
+          <Turnstile
+            className="mx-auto mt-2.5 flex"
+            // siteKey={import.meta.env.VITE_CLOUDFLARE_SITE_KEY}
+            siteKey="1x00000000000000000000AA"
+            onSuccess={(token) => setToken(token)}
+            onError={() => setToken(null)}
+            onExpire={() => setToken(null)}
+          />
           <div className="m-5 flex items-center justify-center">
             <button
               type="submit"
-              className="btn-wide h-14 rounded-3xl bg-red-900 text-white"
+              className="btn btn-wide h-14 rounded-3xl bg-red-900 text-white shadow-lg transition duration-200 ease-in-out hover:translate-y-0.5 hover:bg-red-800 hover:shadow-md"
+              disabled={!token}
             >
               Send Message
             </button>
