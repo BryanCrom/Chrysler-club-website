@@ -1,5 +1,5 @@
 import emailjs from "@emailjs/browser";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Turnstile } from "@marsidev/react-turnstile";
 
 import Border from "../components/Border";
@@ -10,6 +10,15 @@ const ContactPage = () => {
 
   const [email, setEmail] = useState("");
   const [token, setToken] = useState(null);
+  const [size, setSize] = useState("normal");
+
+  useEffect(() => {
+    const getSize = () =>
+      setSize(window.innerWidth < 480 ? "compact" : "normal");
+    getSize();
+    window.addEventListener("resize", getSize());
+    return () => window.removeEventListener("resize", getSize());
+  }, []);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -39,7 +48,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="mx-5 mb-10 mt-32 max-w-3xl md:mx-auto md:mt-44">
+    <div className="mx-auto mb-5 mt-32 max-w-2xl px-5 md:mt-44">
       <Border>
         <h1 className="mb-4 text-center text-4xl font-bold underline">
           Contact Us
@@ -86,7 +95,7 @@ const ContactPage = () => {
                 name="subject"
                 type="text"
                 autoComplete="off"
-              ></input>
+              />
             </label>
           </div>
           <div className="mx-5 my-2.5 flex flex-col">
@@ -111,6 +120,7 @@ const ContactPage = () => {
             onSuccess={(token) => setToken(token)}
             onError={() => setToken(null)}
             onExpire={() => setToken(null)}
+            options={{ size }}
           />
           <div className="m-5 flex items-center justify-center">
             <button
