@@ -16,8 +16,8 @@ const ContactPage = () => {
     const getSize = () =>
       setSize(window.innerWidth < 480 ? "compact" : "normal");
     getSize();
-    window.addEventListener("resize", getSize());
-    return () => window.removeEventListener("resize", getSize());
+    window.addEventListener("resize", getSize);
+    return () => window.removeEventListener("resize", getSize);
   }, []);
 
   const sendEmail = (e) => {
@@ -48,15 +48,15 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="mx-auto mb-5 mt-32 max-w-2xl px-5 md:mt-44">
+    <div className="mx-auto mb-5 mt-32 max-w-2xl px-5 sm:mt-40 md:mt-44">
       <Border>
-        <h1 className="mb-4 text-center text-4xl font-bold underline">
+        <h1 className="mb-4 text-center font-serif text-4xl font-bold underline">
           Contact Us
         </h1>
         <form className="flex flex-col" ref={formRef} onSubmit={sendEmail}>
           <div className="mx-5 my-2.5 flex flex-col">
             <label
-              className="flex flex-col text-lg font-semibold"
+              className="flex flex-col font-serif text-lg font-semibold"
               id="full_name_label"
             >
               Full Name
@@ -73,7 +73,7 @@ const ContactPage = () => {
           </div>
           <div className="mx-5 my-2.5 flex flex-col">
             <label
-              className="flex flex-col text-lg font-semibold"
+              className="flex flex-col font-serif text-lg font-semibold"
               id="email_label"
             >
               Email Address
@@ -100,7 +100,7 @@ const ContactPage = () => {
           </div>
           <div className="mx-5 my-2.5 flex flex-col">
             <label
-              className="flex flex-col text-lg font-semibold"
+              className="flex flex-col font-serif text-lg font-semibold"
               id="message_label"
             >
               Message
@@ -125,7 +125,7 @@ const ContactPage = () => {
           <div className="m-5 flex items-center justify-center">
             <button
               type="submit"
-              className="btn btn-wide h-14 rounded-3xl bg-red-900 text-white shadow-lg transition duration-200 ease-in-out hover:translate-y-0.5 hover:bg-red-800 hover:shadow-md"
+              className="btn btn-wide h-14 rounded-3xl bg-red-900 font-serif text-white shadow-lg transition duration-200 ease-in-out hover:translate-y-0.5 hover:bg-red-800 hover:shadow-md"
               disabled={!token}
             >
               Send Message
@@ -135,7 +135,13 @@ const ContactPage = () => {
       </Border>
 
       <dialog id="success_modal" className="modal">
-        <Modal title="Success" message={`A reply will be sent to ${email}`} />
+        <Modal
+          title="Success"
+          message={
+            "Please double check this email address is correct so we can send you a reply:"
+          }
+          email={email}
+        />
       </dialog>
       <dialog id="error_modal" className="modal">
         <Modal title="error" message="Something went wrong." />

@@ -24,18 +24,26 @@ const Navbar = () => {
           <div className="flex w-full items-center gap-4">
             <Link to="/">
               <img
-                className="h-24 w-24 shrink-0 object-contain md:h-[136px] md:w-[136px]"
+                className="h-24 w-24 shrink-0 object-contain sm:h-32 sm:w-32 md:h-[136px] md:w-[136px]"
                 src={chryslerSticker}
               />
             </Link>
-            <h1 className="text-xl md:text-3xl">Chrysler Restorers Club NZ</h1>
+            <h1 className="font-serif text-xl font-medium sm:text-2xl md:text-3xl">
+              Chrysler Restorers Club NZ
+            </h1>
 
             <div className="hidden grow items-center justify-end gap-2 md:gap-4 lg:flex">
-              <Link to="/" className="btn btn-ghost btn-lg rounded-xl">
+              <Link
+                to="/"
+                className="btn btn-ghost btn-lg rounded-xl font-serif"
+              >
                 Home
               </Link>
 
-              <Link to="/contact" className="btn btn-ghost btn-lg rounded-xl">
+              <Link
+                to="/contact"
+                className="btn btn-ghost btn-lg rounded-xl font-serif"
+              >
                 Contact Us
               </Link>
             </div>
@@ -47,11 +55,11 @@ const Navbar = () => {
               <summary className="btn btn-ghost rounded-xl">
                 <IconMenuDeep />
               </summary>
-              <ul className="z-1 menu dropdown-content rounded-xl bg-base-100 shadow-md">
+              <ul className="z-1 menu dropdown-content gap-2 rounded-2xl bg-base-100 shadow-md">
                 <li>
                   <Link
                     to="/"
-                    className="btn btn-ghost btn-lg rounded-xl"
+                    className="btn btn-ghost btn-lg rounded-xl font-serif"
                     onClick={() => (detailsRef.current.open = false)}
                   >
                     Home
@@ -60,7 +68,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/contact"
-                    className="btn btn-ghost btn-lg rounded-xl"
+                    className="btn btn-ghost btn-lg rounded-xl font-serif"
                     onClick={() => (detailsRef.current.open = false)}
                   >
                     Contact Us
