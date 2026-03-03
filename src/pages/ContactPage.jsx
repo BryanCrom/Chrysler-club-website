@@ -7,6 +7,7 @@ import Modal from "../components/Modal";
 
 const ContactPage = () => {
   const formRef = useRef();
+  const turnstileRef = useRef();
 
   const [email, setEmail] = useState("");
   const [token, setToken] = useState(null);
@@ -39,6 +40,10 @@ const ContactPage = () => {
           setEmail(formRef.current.email.value);
           console.log("success");
           document.getElementById("success_modal").showModal();
+          if (turnstileRef.current) {
+            turnstileRef.current.reset();
+          }
+          formRef.current.reset();
         },
         (error) => {
           console.log("Error: " + error);
@@ -115,6 +120,7 @@ const ContactPage = () => {
           </div>
           <Turnstile
             className="mx-auto mt-2.5 flex"
+            ref={turnstileRef}
             siteKey={import.meta.env.VITE_CLOUDFLARE_SITE_KEY}
             onSuccess={(token) => setToken(token)}
             onError={() => setToken(null)}
@@ -140,10 +146,15 @@ const ContactPage = () => {
             "Please double check this email address is correct so we can send you a reply:"
           }
           email={email}
+          closeId="success_modal"
         />
       </dialog>
       <dialog id="error_modal" className="modal">
-        <Modal title="error" message="Something went wrong." />
+        <Modal
+          title="error"
+          message="Something went wrong."
+          closeId="error_modal"
+        />
       </dialog>
     </div>
   );

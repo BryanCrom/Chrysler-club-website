@@ -5,11 +5,16 @@ const Modal = (props) => {
         {props.title}
       </h1>
       <p className="py-4 text-center font-serif">{props.message}</p>
-      <p className="text-center font-serif font-bold">{props.email}</p>
+      {props.email && (
+        <p className="text-center font-serif font-bold">{props.email}</p>
+      )}
       <div className="modal-action">
-        <form className="dialog">
-          <button className="btn font-serif">Dismiss</button>
-        </form>
+        <button
+          className="btn font-serif"
+          onClick={() => document.getElementById(props.closeId).close()}
+        >
+          Dismiss
+        </button>
       </div>
     </div>
   );
