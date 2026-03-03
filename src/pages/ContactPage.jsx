@@ -115,8 +115,7 @@ const ContactPage = () => {
           </div>
           <Turnstile
             className="mx-auto mt-2.5 flex"
-            // siteKey={import.meta.env.VITE_CLOUDFLARE_SITE_KEY}
-            siteKey="1x00000000000000000000AA"
+            siteKey={import.meta.env.VITE_CLOUDFLARE_SITE_KEY}
             onSuccess={(token) => setToken(token)}
             onError={() => setToken(null)}
             onExpire={() => setToken(null)}
