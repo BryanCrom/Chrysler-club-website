@@ -75,10 +75,9 @@ const HomePage = () => {
             Membership
           </h1>
           <p className="mb-4 text-center font-serif text-xl">
-            The annual membership cost is $50 for individuals and $55 for
-            families. The membership includes 6 magazines a year, access to the
-            spare parts, access to the club library, and events organised by the
-            club.
+            The annual membership cost is $50. The membership includes 6
+            magazines a year, access to the spare parts, access to the club
+            library, and events organised by the club.
           </p>
 
           <p className="my-2 text-center font-serif text-xl">

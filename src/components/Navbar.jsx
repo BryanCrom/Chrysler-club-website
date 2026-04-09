@@ -28,11 +28,11 @@ const Navbar = () => {
                 src={chryslerSticker}
               />
             </Link>
-            <h1 className="font-serif text-xl font-medium sm:text-2xl md:text-3xl">
-              Chrysler Restorers Club NZ
+            <h1 className="text-center font-serif text-xl font-medium sm:text-2xl md:text-3xl">
+              Chrysler Restorers Club of New Zealand
             </h1>
 
-            <div className="hidden grow items-center justify-end gap-2 md:gap-4 lg:flex">
+            <div className="hidden grow items-center justify-end gap-2 md:gap-4 xl:flex">
               <Link
                 to="/"
                 className="btn btn-ghost btn-lg rounded-xl font-serif"
@@ -50,7 +50,7 @@ const Navbar = () => {
 
             <details
               ref={detailsRef}
-              className="dropdown dropdown-end dropdown-bottom flex grow items-center justify-end lg:hidden"
+              className="dropdown dropdown-end dropdown-bottom flex grow items-center justify-end xl:hidden"
             >
               <summary className="btn btn-ghost rounded-xl">
                 <IconMenuDeep />
