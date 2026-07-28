@@ -14,4 +14,8 @@ export default defineConfig({
       exclude: ["/404", "/admin"],
     }),
   ],
+  preview: {
+    host: true,
+    port: 1936,
+  },
 });

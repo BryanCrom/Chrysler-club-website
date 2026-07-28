@@ -71,9 +71,9 @@ const HomePage = () => {
 
       <div className="my-5">
         <Border>
-          <h1 className="mb-4 text-center font-serif text-3xl font-bold underline">
+          <h2 className="mb-4 text-center font-serif text-3xl font-bold underline">
             Membership
-          </h1>
+          </h2>
           <p className="mb-4 text-center font-serif text-xl">
             The annual membership cost is $50. The membership includes 6
             magazines a year, access to the spare parts, access to the club
