@@ -53,7 +53,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="mx-auto mb-5 mt-32 max-w-2xl px-5 sm:mt-40 md:mt-44">
+    <main className="mx-auto mb-5 mt-32 max-w-2xl px-5 sm:mt-40 md:mt-44">
       <Border>
         <h1 className="mb-4 text-center font-serif text-4xl font-bold underline">
           Contact Us
@@ -156,7 +156,7 @@ const ContactPage = () => {
           closeId="error_modal"
         />
       </dialog>
-    </div>
+    </main>
   );
 };
 

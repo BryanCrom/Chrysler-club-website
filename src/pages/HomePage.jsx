@@ -12,7 +12,7 @@ import { offerInfo, homePageInfo } from "../constants";
 
 const HomePage = () => {
   return (
-    <div className="mx-auto mt-32 max-w-6xl px-5 sm:mt-40 md:mt-44">
+    <main className="mx-auto mt-32 max-w-6xl px-5 sm:mt-40 md:mt-44">
       <div className="my-5">
         <Border>
           <img src={top} height="100%" width="100%" />
@@ -100,7 +100,7 @@ const HomePage = () => {
           </p>
         </Border>
       </div>
-    </div>
+    </main>
   );
 };
 
