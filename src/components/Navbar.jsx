@@ -2,20 +2,10 @@ import { Link } from "react-router";
 import { IconMenuDeep } from "@tabler/icons-react";
 
 import chryslerSticker from "../assets/Chrysler-Sticker.png";
-import { useEffect, useRef } from "react";
+import useNav from "../hooks/useNav";
 
 const Navbar = () => {
-  const detailsRef = useRef(null);
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (detailsRef.current && !detailsRef.current.contains(event.target)) {
-        detailsRef.current.open = false;
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const { detailsRef } = useNav();
 
   return (
     <header className="fixed top-0 w-full bg-base-100 shadow-md">
