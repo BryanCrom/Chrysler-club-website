@@ -1,12 +1,31 @@
-# React + Vite
+# Chrysler Club Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### The official website for the Chrysler Restorers Club of New Zealand
 
-Currently, two official plugins are available:
+> Author: Bryan Crombach
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Node
 
-## Expanding the ESLint configuration
+- run `npm i` to install dependencies
+- run `npm run dev` to run in dev mode
+- run `npm run build` to build project
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Docker
+
+### Initialisation:
+
+- run `docker build --secret id=env,src=.env -t chrysler-club-image .` to create latest version of the docker image
+- run `docker run --name chrysler-club-container -p 1936:1936 chrysler-club-image` to create docker container
+
+### Updating the image/container:
+
+- run `docker build --secret id=env,src=.env -t chrysler-club-image .` to create latest version of the docker image
+- run `docker rm chrysler-club-container` to remove the existing container
+- run `docker run --name chrysler-club-container -p 1936:1936 chrysler-club-image` to create the new docker container
+
+### Useful commands:
+
+- run `docker start chrysler-club-container` to **_START_** the existing container
+- run `docker restart chrysler-club-container` to **_RESTART_** the running container
+- run `docker stop chrysler-club-container` to **_STOP_** the running container
+- run `docker logs chrysler-club-container` to **_VIEW THE CONTAINER LOGS_**
